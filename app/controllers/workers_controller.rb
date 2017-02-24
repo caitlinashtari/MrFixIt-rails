@@ -1,7 +1,7 @@
 class WorkersController < ApplicationController
   def show
     @worker = current_worker
-    render :show
+    @pending = current_worker.jobs.where()
   end
 
   def new
