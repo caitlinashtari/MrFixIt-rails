@@ -1,5 +1,7 @@
-<%= form_for job do |f| %>
+<%= form_for job, remote: true do |f| %>
   <%= f.check_box :in_progress%>
   <%= f.label :in_progress, "In Progress" %>
+  <%= f.check_box :completed%>
+  <%= f.label :completed, "Complete" %>
   <%= f.submit "Update" %>
 <% end %>

@@ -6,8 +6,7 @@
     <ul>
     <% @pending.each do |job| %>
     <li id="job_<%= job.id  %>"><%= link_to job.title, job_path(job) %></li>
-    <%= render "completed_form", job: job %>
-    <%= render "in_progress_form", job: job %><br>
+    <%= render "form", job: job %><br>
     <% end %>
     </ul>
   </div>
@@ -29,7 +28,7 @@
     <ul>
     <% @in_progress.each do |job| %>
     <li><%= link_to job.title, job_path(job) %></li>
-    <%= render "_completed_form", job: job %><br>
+    <%= render "form", job: job %><br>
     <% end %>
     </ul>
   </div>

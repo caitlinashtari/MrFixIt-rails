@@ -1,3 +1,7 @@
-$('#claim_job_link').hide();
-$('#not_claimed').hide();
-$('#claimed').append('<%= j @job.title %> has been claimed!');
+<% if @job.completed? %>
+  $('#edit_job_<%= @job.id %>').appendTo('#completed_jobs')
+<% elsif @job.in_progress? %>
+  $('#edit_job_<%= @job.id %>').appendTo('#in_progress_jobs')
+<% elsif @job.pending? %>
+  $('#edit_job_<%= @job.id %>').appendTo('#pending_jobs')
+<% end %>
