@@ -1,7 +1,9 @@
 class WorkersController < ApplicationController
   def show
     @worker = current_worker
-    @pending = current_worker.jobs.where()
+    @pending = current_worker.jobs.where(pending: true)
+    @completed = current_worker.jobs.where(completed: true)
+    @in_progress = current_worker.jobs.where(in_progress: true)
   end
 
   def new
@@ -17,5 +19,6 @@ class WorkersController < ApplicationController
       redirect_to new_worker_registration_path
     end
   end
+
 
 end
