@@ -23,12 +23,16 @@ class JobsController < ApplicationController
   end
 
   def update
+
+  end
+
+  def claim_job
     @job = Job.find(params[:id])
     if current_worker
       if @job.update(pending: true, worker_id: current_worker.id)
         respond_to do |format|
           format.html {redirect_to worker_path(current_worker)}
-          format.js { flash[:notice] = "You've successfully claimed this job." }
+          format.js { 'claim_job.js.erb' }
         end
       else
         render :show

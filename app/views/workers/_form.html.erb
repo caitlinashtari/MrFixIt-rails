@@ -1,8 +1,0 @@
-<%= form_for job do |f| %>
-  <%= f.check_box :completed%>
-  <%= f.label :completed, "Complete" %>
-  <%= f.check_box :in_progress%>
-  <%= f.label :in_progress, "In Progress" %>
-  <%= f.submit "Update" %>
-  <%= link_to "Delete", job, method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
-<% end %>

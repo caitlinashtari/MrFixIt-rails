@@ -10,5 +10,5 @@
   <div id="claimed">
     <p id="not_claimed">No one has claimed this job!</p>
   </div>
-<%= link_to "click here to claim it now", job_path(@job), :method => "patch", id: "claim_job_link", remote: true %>
+<%= link_to "Claim Job", worker_claim_job_path(@job.id), method: 'post', id: "claim_job_link", remote: true %>
 <% end %>
