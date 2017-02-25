@@ -17,6 +17,11 @@ group :development, :test do
   gem 'launchy'
   gem 'pry'
   gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'simplecov', require: false
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :development do
