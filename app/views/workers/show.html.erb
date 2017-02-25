@@ -3,33 +3,34 @@
   <div class="col s4" id="pending_jobs">
     <h4>Pending:</h4>
 
-    <ul>
     <% @pending.each do |job| %>
-    <li id="job_<%= job.id  %>"><%= link_to job.title, job_path(job) %></li>
-    <%= render "form", job: job %><br>
+      <div id="job_<%= job.id  %>">
+        <p><%= link_to job.title, job_path(job) %></p>
+        <%= render "form", job: job %><br>
+      </div>
     <% end %>
-    </ul>
   </div>
 
   <div class="col s4" id="completed_jobs">
     <h4>Completed:</h4>
 
-    <ul>
     <% @completed.each do |job| %>
-    <li><%= link_to job.title, job_path(job) %></li>
-    <%= render "form", job: job %><br>
+      <div id="job_<%= job.id  %>">
+        <p><%= link_to job.title, job_path(job) %></p>
+        <%= render "form", job: job %><br>
+      </div>
     <% end %>
-    </ul>
   </div>
 
   <div class="col s4" id="in_progress_jobs">
     <h4>In-Progress:</h4>
 
-    <ul>
     <% @in_progress.each do |job| %>
-    <li><%= link_to job.title, job_path(job) %></li>
-    <%= render "form", job: job %><br>
+      <div id="job_<%= job.id  %>">
+        <p><%= link_to job.title, job_path(job) %></p>
+        <%= render "form", job: job %><br>
+      </div>
     <% end %>
-    </ul>
+
   </div>
 </div>
