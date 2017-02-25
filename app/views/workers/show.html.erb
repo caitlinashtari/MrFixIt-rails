@@ -4,10 +4,12 @@
     <h4>Pending:</h4>
 
     <% @pending.each do |job| %>
+      <% if job.completed == false && job.in_progress == false %>
       <div id="job_<%= job.id  %>">
         <p><%= link_to job.title, job_path(job) %></p>
         <%= render "form", job: job %><br>
       </div>
+      <% end %>
     <% end %>
   </div>
 
@@ -26,10 +28,12 @@
     <h4>In-Progress:</h4>
 
     <% @in_progress.each do |job| %>
-      <div id="job_<%= job.id  %>">
-        <p><%= link_to job.title, job_path(job) %></p>
-        <%= render "form", job: job %><br>
-      </div>
+      <% if job.completed == false %>
+        <div id="job_<%= job.id  %>">
+          <p><%= link_to job.title, job_path(job) %></p>
+          <%= render "form", job: job %><br>
+        </div>
+      <% end %>
     <% end %>
 
   </div>

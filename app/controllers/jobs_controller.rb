@@ -26,13 +26,6 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     if current_worker
       if @job.update(job_params)
-        if @job.completed == true
-          @job.update(completed_params)
-        elsif @job.pending == true
-          @job.update(pending_params)
-        elsif @job.in_progress == true
-          @job.update(in_progress_params)
-        end
         respond_to do |format|
           format.html {redirect_to worker_path(current_worker)}
           format.js
@@ -56,35 +49,11 @@ class JobsController < ApplicationController
     end
   end
 
-  # def status()
-  #   if self.completed == true
-  #     self.in_progress = false
-  #     self.pending = false
-  #   elsif self.in_progress == true
-  #     self.pending = false
-  #     self.completed = false
-  #   elsif self.pending == true
-  #     self.in_progress = false
-  #     self.completed = false
-  #   end
-  # end
 
 private
 
   def job_params
     params.require(:job).permit(:title, :description, :in_progress, :completed, :pending)
-  end
-
-  def complete_params
-    params.require(:job).permit(in_progress: false, completed: true, pending: false)
-  end
-
-  def in_progress_params
-    params.require(:job).permit(in_progress: true, completed: false, pending: false)
-  end
-
-  def pending_params
-    params.require(:job).permit(in_progress: false, completed: false, pending: true)
   end
 
 end
