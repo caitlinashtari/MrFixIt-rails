@@ -7,20 +7,10 @@
       <% if job.completed == false && job.in_progress == false %>
       <div id="job_<%= job.id  %>">
         <p><%= link_to job.title, job_path(job) %></p>
-        <%= render "form", job: job %><br>
+        <p><%= link_to "Completed", job_path(job, completed: true), method: "patch", class: "btn", id: "completed_button", remote:true %></p>
+        <p><%= link_to "In Progress", job_path(job, in_progress: true), method: "patch", class: "btn", id: "in_progress_button", remote:true %></p>
       </div>
       <% end %>
-    <% end %>
-  </div>
-
-  <div class="col s4" id="completed_jobs">
-    <h4>Completed:</h4>
-
-    <% @completed.each do |job| %>
-      <div id="job_<%= job.id  %>">
-        <p><%= link_to job.title, job_path(job) %></p>
-        <%= render "form", job: job %><br>
-      </div>
     <% end %>
   </div>
 
@@ -31,10 +21,19 @@
       <% if job.completed == false %>
         <div id="job_<%= job.id  %>">
           <p><%= link_to job.title, job_path(job) %></p>
-          <%= render "form", job: job %><br>
+          <p><%= link_to "Completed", job_path(job, completed: true), method: "patch", class: "btn", id: "completed_button", remote:true %></p>
         </div>
       <% end %>
     <% end %>
+  </div>
 
+  <div class="col s4" id="completed_jobs">
+    <h4>Completed:</h4>
+
+    <% @completed.each do |job| %>
+      <div id="job_<%= job.id  %>">
+        <p><%= link_to job.title, job_path(job) %></p>
+      </div>
+    <% end %>
   </div>
 </div>

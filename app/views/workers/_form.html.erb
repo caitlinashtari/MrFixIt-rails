@@ -1,8 +1,0 @@
-<%= form_for job, remote: true do |f| %>
-  <%= f.radio_button :in_progress, true, id: 'in_progress'%>
-  <%= f.label :in_progress, for: 'in_progress'%>
-  <%= f.radio_button :completed, true, id: 'completed' %>
-  <%= f.label :completed, for: 'completed' %>
-  <%= f.submit "Update" %>
-<% end %>
-<%= link_to "remove", job, method: "delete", remote: true %>

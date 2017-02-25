@@ -1,13 +1,9 @@
 <% if @job.completed? %>
-  $('#in_progress_jobs').remove('#job_<%= @job.id %>')
-  $('#pending_jobs').remove('#job_<%= @job.id %>')
   $('#job_<%= @job.id %>').appendTo('#completed_jobs');
+  $('#completed_button').remove()
 <% elsif @job.in_progress? %>
-  $('#completed_jobs').remove('#job_<%= @job.id %>')
-  $('#pending_jobs').remove('#job_<%= @job.id %>')
   $('#job_<%= @job.id %>').appendTo('#in_progress_jobs');
+  $('#in_progress_button').remove()
 <% elsif @job.pending? %>
-  $('#completed_jobs').remove('#job_<%= @job.id %>')
-  $('#in_progress_jobs').remove('#job_<%= @job.id %>')
   $('#job_<%= @job.id %>').appendTo('#pending_jobs');
 <% end %>
