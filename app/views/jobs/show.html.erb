@@ -3,9 +3,13 @@
 <h3><%= @job.description %></h3>
 
 <% if @job.pending && !current_worker %>
-  <p>Someone has already claimed this job; it's currently pending.</p>
-<% elsif @job.pending && current_worker %>
+  <p>Someone has already claimed this job.</p>
+<% elsif @job.pending && current_worker && !@job.completed && !@job.in_progress %>
   <p>You've claimed this job; it's currently pending.</p>
+<% elsif @job.in_progress && current_worker && !@job.completed %>
+  <p>You've claimed this job; it's currently in progress.</p>
+<% elsif @job.completed && current_worker %>
+  <p>You've claimed this job; it's completed.</p>
 <% else %>
   <div id="claimed">
     <p id="not_claimed">No one has claimed this job!</p>

@@ -46,15 +46,6 @@ class JobsController < ApplicationController
     end
   end
 
-  def destroy
-    @job = Job.destroy(params[:id])
-    respond_to do |format|
-      format.html {redirect_to worker_path(current_worker)}
-      format.js
-    end
-  end
-
-
 private
 
   def job_params
